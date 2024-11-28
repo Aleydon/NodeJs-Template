@@ -2,14 +2,14 @@
 	"compilerOptions": {
 		// Enable latest features
 		"lib": ["ES2022"],
-		"module": "ES6",
+		"module": "ES2022",
 		"target": "ES2022",
 		"moduleDetection": "force",
 		"jsx": "react-jsx",
 		// "allowJs": true,
 
 		// Bundler mode
-		"moduleResolution": "classic",
+		"moduleResolution": "node",
 		// "allowImportingTsExtensions": false,
 		// "verbatimModuleSyntax": true,
 		"noEmit": true,
@@ -31,16 +31,15 @@
 		"removeComments": true,
 
 		// Paths
-		"baseUrl": "./src",
+		"baseUrl": "./",
 		"paths": {
-			"@/*": ["./src/*"],
 			"@controllers/*": ["./src/controllers/*"],
 			"@models/*": ["./src/models/*"],
 			"@routes/*": ["./src/routes/*"],
 			"@services/*": ["./src/services/*"],
 			"@utils/*": ["./src/utils/*"],
-			"@constants/*": ["./src/@constants/*"],
-			"@config/*": ["./src/@config/*"]
+			"@constants/*": ["./src/constants/*"],
+			"@config/*": ["./src/config/*"]
 		},
 
 		// Type checking
