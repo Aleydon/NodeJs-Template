@@ -9,6 +9,9 @@ describe('User Model', () => {
 		const user = new UserModel('Aleydon', 29);
 		expect(user.name).toBe('Aleydon');
 	});
+});
+
+describe('Math', () => {
 	it('should sum two numbers correctly', () => {
 		const result = sum(1, 2);
 		expect(result).toBe(3);
