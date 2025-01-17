@@ -26,12 +26,12 @@
 		"noPropertyAccessFromIndexSignature": false,
 
 		// Input and Output
-		"rootDir": "./src",
+		"rootDir": ".",
 		"outDir": "./dist",
 		"removeComments": true,
 
 		// Paths
-		"baseUrl": "./",
+		"baseUrl": ".",
 		"paths": {
 			"@controllers/*": ["./src/controllers/*"],
 			"@models/*": ["./src/models/*"],
