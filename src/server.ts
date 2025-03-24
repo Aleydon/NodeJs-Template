@@ -1,19 +1,33 @@
 import express, { type Request, type Response } from 'express';
 import cors from 'cors';
-import { UserModel } from '@models/user.model';
+
+import { prisma } from './config/prisma';
+import { route } from './routes';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use(cors());
+async function main() {
+	app.use(cors());
+	app.use(express.json());
+	app.use(express.urlencoded({ extended: true }));
+	app.use(route);
 
-const PORT = 3001;
-const { name }: UserModel = new UserModel('Aleydon', 29);
+	app.all('*', (req: Request, res: Response) => {
+		res.status(404).json({ error: `Route ${req.originalUrl} not found` });
+	});
 
-app.get('/', (_req: Request, res: Response) => {
-	res.send('Hello World!');
-});
+	app.listen(PORT, () => {
+		console.log(`Server is listening on port ${PORT}`);
+	});
+}
 
-app.listen(PORT, () => {
-	console.log(`Server runing on localhost://${PORT}, ${name}`);
-});
+main()
+	.then(async () => {
+		await prisma.$connect();
+	})
+	.catch(async (e: Error) => {
+		console.error(e);
+		await prisma.$disconnect();
+		process.exit(1);
+	});
