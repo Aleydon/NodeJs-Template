@@ -1,0 +1,75 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "REST API",
+		"description": ""
+	},
+	"host": "",
+	"basePath": "",
+	"tags": [
+		{
+			"name": "",
+			"description": ""
+		}
+	],
+	"securityDefinitions": {},
+	"paths": {
+		"/users": {
+			"get": {
+				"description": "",
+				"responses": {
+					"default": {
+						"description": ""
+					}
+				}
+			},
+			"post": {
+				"description": "",
+				"responses": {
+					"default": {
+						"description": ""
+					}
+				}
+			}
+		},
+		"/users/{id}": {
+			"put": {
+				"description": "",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"default": {
+						"description": ""
+					}
+				}
+			},
+			"delete": {
+				"description": "",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"default": {
+						"description": ""
+					}
+				}
+			}
+		}
+	}
+}

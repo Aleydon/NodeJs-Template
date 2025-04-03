@@ -1,4 +1,6 @@
 import express, { type Request, type Response } from 'express';
+import swaggerUi from 'swagger-ui-express';
+import swaggerFile from '../swagger-output.json';
 import cors from 'cors';
 
 import { prisma } from './config/prisma';
@@ -12,6 +14,7 @@ async function main() {
 	app.use(express.json());
 	app.use(express.urlencoded({ extended: true }));
 	app.use(route);
+	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 	app.all('*', (req: Request, res: Response) => {
 		res.status(404).json({ error: `Route ${req.originalUrl} not found` });
