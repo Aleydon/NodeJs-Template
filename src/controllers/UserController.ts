@@ -13,12 +13,21 @@ export class UserController {
 	}
 
 	async create(req: Request, res: Response) {
-		const { name, email } = req.body;
+		const { name, email, password } = req.body;
+		const avatar = req.file;
+
+		if (!name || !email || !password) {
+			return res
+				.status(400)
+				.json({ error: 'Name, email and password are required' });
+		}
 		try {
 			const user = await prisma.user.create({
 				data: {
 					name,
-					email
+					email,
+					password,
+					avatar: avatar ? avatar.filename : null
 				}
 			});
 			return res.status(201).json({ user });

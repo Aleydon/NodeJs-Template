@@ -1,16 +1,19 @@
 import { Router, type Request, type Response } from 'express';
 
 import { UserController } from './controllers/UserController';
+import multer from 'multer';
+import { multerConfig } from './config/multer';
 
 const route = Router();
 
+const upload = multer(multerConfig);
 const userController = new UserController();
 
 route.get('/users', (req: Request, res: Response) => {
 	userController.index(req, res);
 });
 
-route.post('/users', (req: Request, res: Response) => {
+route.post('/users', upload.single('avatar'), (req: Request, res: Response) => {
 	userController.create(req, res);
 });
 
