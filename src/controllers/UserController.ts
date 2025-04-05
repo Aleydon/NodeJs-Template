@@ -4,6 +4,11 @@ import { prisma } from '@/config/prisma';
 
 export class UserController {
 	async index(req: Request, res: Response) {
+		const users = await prisma.user.findMany();
+		if (!users) {
+			return res.status(404).json({ error: 'No users found' });
+		}
+
 		try {
 			const users = await prisma.user.findMany();
 			return res.status(200).json({ users });
