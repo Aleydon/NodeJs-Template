@@ -1,4 +1,5 @@
 import { type Request, type Response } from 'express';
+import bcrypt from 'bcryptjs';
 
 import { prisma } from '@/config/prisma';
 
@@ -20,6 +21,17 @@ export class UserController {
 	async create(req: Request, res: Response) {
 		const { name, email, password } = req.body;
 		const avatar = req.file;
+		const hashedPassword = await bcrypt.hash(password, 10);
+
+		const userExists = await prisma.user.findUnique({
+			where: {
+				email
+			}
+		});
+
+		if (userExists) {
+			return res.status(400).json({ error: 'User already exists' });
+		}
 
 		if (!name || !email || !password) {
 			return res
@@ -31,7 +43,7 @@ export class UserController {
 				data: {
 					name,
 					email,
-					password,
+					password: hashedPassword,
 					avatar: avatar ? avatar.filename : null
 				}
 			});
