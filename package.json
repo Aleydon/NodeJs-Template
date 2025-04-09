@@ -32,6 +32,8 @@
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^19.8.0",
+		"@commitlint/config-conventional": "^19.8.0",
 		"@jest/globals": "^29.7.0",
 		"@types/bcryptjs": "^3.0.0",
 		"@types/cors": "^2.8.17",
