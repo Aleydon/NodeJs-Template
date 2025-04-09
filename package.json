@@ -15,7 +15,7 @@
 		"dev": "tsx watch src/server.ts",
 		"build": "tsup",
 		"lint": "eslint . --fix --ext .js,.ts",
-		"commit": "eslint . --fix --ext .js,.ts && prettier --write .  && git add .",
+		"commit": "eslint . --fix --ext .js,.ts && prettier --write .  && git add . && git cz",
 		"prepare": "husky",
 		"test": "jest",
 		"test:watch": "jest --watchAll",
@@ -45,6 +45,7 @@
 		"@typescript-eslint/eslint-plugin": "^8.15.0",
 		"@typescript-eslint/parser": "^8.15.0",
 		"@typescript-eslint/typescript-estree": "^5.59.2",
+		"commitizen": "^4.3.1",
 		"cors": "^2.8.5",
 		"dotenv": "^16.4.5",
 		"eslint": "^8.0.1",
@@ -68,5 +69,11 @@
 	},
 	"peerDependencies": {
 		"typescript": "^4.7.4"
+	},
+	"config": {
+		"commitizen": {
+			"version": "2.0.0",
+			"path": "./node_modules/cz-conventional-changelog"
+		}
 	}
 }
