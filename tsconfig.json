@@ -43,10 +43,10 @@
 			"@/routes/*": ["src/routes/*"],
 			"@/utils/*": ["src/utils/*"],
 			"@/config/*": ["src/config/*"]
-		},
+		}
 
 		// Type checking
-		"typeRoots": ["./node_modules/@types", "./src/@types"]
+		// "typeRoots": ["./node_modules/@types", "./src/@types"]
 	},
 	"include": ["src/**/*.ts"],
 	"exclude": ["node_modules", "dist"]
