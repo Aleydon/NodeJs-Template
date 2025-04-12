@@ -88,16 +88,17 @@ const config = {
 
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
 	// moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-	// 	prefix: '<rootDir>'
-	// }),
+	// prefix: '<rootDir>',
 	moduleNameMapper: {
-		'^@/(.*)$': '<rootDir>/$1',
-		'^@controllers/(.*)$': '<rootDir>/src/controllers/$1',
-		'^@models/(.*)$': '<rootDir>/src/models/$1',
-		'^@services/(.*)$': '<rootDir>/src/services/$1',
-		'^@utils/(.*)$': '<rootDir>/src/utils/$1',
-		'^@constants/(.*)$': '<rootDir>/src/constants/$1',
-		'^@config/(.*)$': '<rootDir>/src/config/$1'
+		'^@/(.*)$': '<rootDir>/src/$1',
+		'^@/constants/(.*)$': '<rootDir>/src/constants/$1',
+		'^@/controllers/(.*)$': '<rootDir>/src/controllers/$1',
+		'^@/services/(.*)$': '<rootDir>/src/services/$1',
+		'^@/models/(.*)$': '<rootDir>/src/models/$1',
+		'^@/repositories/(.*)$': '<rootDir>/src/repositories/$1',
+		'^@/routes/(.*)$': '<rootDir>/src/routes/$1',
+		'^@/utils/(.*)$': '<rootDir>/src/utils/$1',
+		'^@/config/(.*)$': '<rootDir>/src/config/$1'
 	},
 
 	// An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
