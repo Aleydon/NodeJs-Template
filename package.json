@@ -13,6 +13,7 @@
 	},
 	"scripts": {
 		"dev": "tsx watch src/server.ts",
+		"start": "node dist/server.js",
 		"build": "tsup",
 		"lint": "eslint . --fix --ext .js,.ts",
 		"commit": "eslint . --fix --ext .js,.ts && prettier --write .  && git add . && git cz",
