@@ -90,15 +90,7 @@ const config = {
 	// moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
 	// prefix: '<rootDir>',
 	moduleNameMapper: {
-		'^@/(.*)$': '<rootDir>/src/$1',
-		'^@/constants/(.*)$': '<rootDir>/src/constants/$1',
-		'^@/controllers/(.*)$': '<rootDir>/src/controllers/$1',
-		'^@/services/(.*)$': '<rootDir>/src/services/$1',
-		'^@/models/(.*)$': '<rootDir>/src/models/$1',
-		'^@/repositories/(.*)$': '<rootDir>/src/repositories/$1',
-		'^@/routes/(.*)$': '<rootDir>/src/routes/$1',
-		'^@/utils/(.*)$': '<rootDir>/src/utils/$1',
-		'^@/config/(.*)$': '<rootDir>/src/config/$1'
+		'^@/(.*)$': '<rootDir>/src/$1'
 	},
 
 	// An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
