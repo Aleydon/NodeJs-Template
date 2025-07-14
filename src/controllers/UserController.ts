@@ -1,4 +1,5 @@
 import { type Request, type Response } from 'express';
+import { ZodError } from 'zod';
 
 import { CreateUserUseCase } from '@/application/use-cases/CreateUserUseCase';
 import { DeleteUserUseCase } from '@/application/use-cases/DeleteUserUseCase';
@@ -19,8 +20,11 @@ export class UserController {
 		try {
 			const users = await this.findAllUsersUseCase.execute();
 			return res.status(200).json({ users });
-		} catch (error) {
+		} catch (error: any) {
 			console.warn(error);
+			if (error instanceof ZodError) {
+				return res.status(400).json({ errors: error.message });
+			}
 			return res.status(500).json({ error: 'Internal server error' });
 		}
 	}
@@ -39,6 +43,9 @@ export class UserController {
 			return res.status(201).json({ user });
 		} catch (error: any) {
 			console.warn(error);
+			if (error instanceof ZodError) {
+				return res.status(400).json({ errors: error.message });
+			}
 			return res.status(400).json({ error: error.message });
 		}
 	}
@@ -50,11 +57,15 @@ export class UserController {
 			const user = await this.updateUserUseCase.execute(id, {
 				name,
 				email,
-				password
+				password,
+				avatar: req.file ? req.file.filename : undefined
 			});
 			return res.status(200).json({ user });
 		} catch (error: any) {
 			console.warn(error);
+			if (error instanceof ZodError) {
+				return res.status(400).json({ errors: error.message });
+			}
 			return res.status(400).json({ error: error.message });
 		}
 	}
@@ -66,6 +77,9 @@ export class UserController {
 			return res.status(200).send('User deleted');
 		} catch (error: any) {
 			console.warn(error);
+			if (error instanceof ZodError) {
+				return res.status(400).json({ errors: error.message });
+			}
 			return res.status(400).json({ error: error.message });
 		}
 	}
@@ -80,6 +94,9 @@ export class UserController {
 			return res.status(200).json({ user });
 		} catch (error: any) {
 			console.warn(error);
+			if (error instanceof ZodError) {
+				return res.status(400).json({ errors: error.message });
+			}
 			return res.status(400).json({ error: error.message });
 		}
 	}

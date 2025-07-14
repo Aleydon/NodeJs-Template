@@ -36,4 +36,12 @@ userRoutes.delete('/users/:id', (req, res) => userController.delete(req, res));
 
 userRoutes.get('/users/:id', (req, res) => userController.show(req, res));
 
+userRoutes.put('/users/:id', upload.single('avatar'), (req, res) =>
+	userController.update(req, res)
+);
+
+userRoutes.post('/users', upload.single('avatar'), (req, res) =>
+	userController.create(req, res)
+);
+
 export { userRoutes };

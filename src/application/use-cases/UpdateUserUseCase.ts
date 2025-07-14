@@ -1,18 +1,25 @@
 import { User } from '../../domain/entities/User';
+import { UpdateUserRequest, UpdateUserSchema } from '../dtos/user-dtos';
 import { IUserRepository } from '../repositories/IUserRepository';
-
-interface UpdateUserRequest {
-	name?: string;
-	email?: string;
-	password?: string;
-	avatar?: string;
-}
 
 export class UpdateUserUseCase {
 	constructor(private userRepository: IUserRepository) {}
 
-	async execute(id: string, data: UpdateUserRequest): Promise<User | null> {
-		const user = await this.userRepository.update(id, data);
+	async execute(
+		id: string,
+		{ name, email, password, avatar }: UpdateUserRequest
+	): Promise<User | null> {
+		UpdateUserSchema.parse({
+			name,
+			email,
+			password
+		});
+		const user = await this.userRepository.update(id, {
+			name,
+			email,
+			password,
+			avatar: avatar ? avatar : undefined
+		});
 		return user;
 	}
 }

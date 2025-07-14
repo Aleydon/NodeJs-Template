@@ -4,16 +4,17 @@ A robust and scalable Node.js template for building RESTful APIs with Express, T
 
 ## Features
 
+- **Clean Architecture:** Organized codebase with clear separation of concerns (Domain, Application, Infrastructure, Presentation).
 - **Express.js:** Fast, unopinionated, minimalist web framework for Node.js.
 - **TypeScript:** Typed superset of JavaScript that compiles to plain JavaScript.
 - **Prisma:** Next-generation ORM for Node.js and TypeScript.
-- **Zod:** TypeScript-first schema validation with static type inference.
+- **Zod:** TypeScript-first schema validation with static type inference, integrated into Use Cases.
 - **PostgreSQL:** Powerful, open source object-relational database system.
 - **Docker:** Containerization for easy development and deployment.
 - **Swagger:** API documentation and testing.
 - **ESLint & Prettier:** Code linting and formatting.
 - **Husky & commitlint:** Git hooks to enforce commit message conventions.
-- **Jest:** Delightful JavaScript Testing Framework.
+- **Jest:** Delightful JavaScript Testing Framework, with unit tests for Use Cases.
 - **Multer:** Middleware for handling `multipart/form-data`.
 
 ## Technologies
@@ -109,9 +110,20 @@ To create a new migration, run the following command:
 npx prisma migrate dev --name <migration_name>
 ```
 
+## Architecture
+
+This project follows the principles of Clean Architecture, promoting a clear separation of concerns and testability. The main layers are:
+
+- **Domain Layer:** Contains enterprise-wide business rules and entities (e.g., `User` entity).
+- **Application Layer:** Orchestrates the flow of data to and from the Domain Layer. It contains Use Cases (e.g., `CreateUserUseCase`, `UpdateUserUseCase`) that encapsulate application-specific business rules. Input validation using Zod is performed in this layer.
+- **Infrastructure Layer:** Handles external concerns such as database persistence (e.g., `PrismaUserRepository`), external APIs, and web frameworks (e.g., Express routes).
+- **Presentation Layer:** Deals with how the data is presented to the user (e.g., `UserController` handling HTTP requests and responses).
+
 ## Testing
 
-This project uses Jest for testing. To run the tests, use the following commands:
+This project uses Jest for testing. Unit tests are primarily focused on the **Application Layer** (Use Cases) to ensure the core business logic is correct and isolated from external concerns. Dependencies are mocked to achieve true unit testing.
+
+To run the tests, use the following commands:
 
 - `npm test`: Run all tests.
 - `npm run test:watch`: Run all tests in watch mode.
