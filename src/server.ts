@@ -6,7 +6,7 @@ import swaggerUi from 'swagger-ui-express';
 import { fileURLToPath } from 'url';
 
 import { prisma } from './config/prisma';
-import { route } from './routes';
+import { userRoutes } from './infrastructure/http/routes/user.routes';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,7 +22,7 @@ async function main() {
 	app.use(cors());
 	app.use(express.json());
 	app.use(express.urlencoded({ extended: true }));
-	app.use(route);
+	app.use(userRoutes);
 	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 	app.use(
 		'/profile-image',
