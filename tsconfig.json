@@ -34,15 +34,7 @@
 		// Paths
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@/constants/*": ["src/constants/*"],
-			"@/controllers/*": ["src/controllers/*"],
-			"@/services/*": ["src/services/*"],
-			"@/models/*": ["src/models/*"],
-			"@/repositories/*": ["src/repositories/*"],
-			"@/routes/*": ["src/routes/*"],
-			"@/utils/*": ["src/utils/*"],
-			"@/config/*": ["src/config/*"]
+			"@/*": ["src/*"]
 		}
 
 		// Type checking
