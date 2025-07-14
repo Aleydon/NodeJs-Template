@@ -1,15 +1,22 @@
 import cors from 'cors';
 import express, { type Request, type Response } from 'express';
+import fs from 'fs';
 import path from 'path';
 import swaggerUi from 'swagger-ui-express';
+import { fileURLToPath } from 'url';
 
-import swaggerFile from '../swagger-output.json';
 import { prisma } from './config/prisma';
 import { route } from './routes';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const swaggerFile = JSON.parse(
+	fs.readFileSync(path.join(__dirname, '..', 'swagger-output.json'), 'utf8')
+);
+
 const app = express();
 const PORT = process.env.PORT || 3333;
-const __dirname = new URL('.', import.meta.url).pathname;
 
 async function main() {
 	app.use(cors());
@@ -22,7 +29,7 @@ async function main() {
 		express.static(path.join(__dirname, '..', 'uploads'))
 	);
 
-	app.all('*', (req: Request, res: Response) => {
+	app.all('/{*any}', (req: Request, res: Response) => {
 		res.status(404).json({ error: `Route ${req.originalUrl} not found` });
 	});
 
