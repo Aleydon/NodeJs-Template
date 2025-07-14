@@ -1,0 +1,11 @@
+feat: add docker support and migrate to postgresql
+
+This commit introduces Docker support to the project with a `docker-compose.yml` file that sets up a PostgreSQL container.
+
+The database schema in `prisma/schema.prisma` has been updated to use PostgreSQL as the provider, and the server now connects to the database defined in the Docker environment.
+
+Additionally, several new dependencies have been added to improve the development workflow, including:
+- `bcryptjs` for password hashing.
+- `pg` as the PostgreSQL client.
+- `swagger-ui-express` for API documentation.
+- Commitlint and Commitizen for enforcing conventional commit messages.

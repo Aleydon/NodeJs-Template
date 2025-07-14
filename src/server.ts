@@ -8,7 +8,7 @@ import { prisma } from './config/prisma';
 import { route } from './routes';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3333;
 const __dirname = new URL('.', import.meta.url).pathname;
 
 async function main() {
