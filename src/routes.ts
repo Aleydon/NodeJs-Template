@@ -1,8 +1,8 @@
-import { Router, type Request, type Response } from 'express';
-
-import { UserController } from './controllers/UserController';
+import { type Request, type Response, Router } from 'express';
 import multer from 'multer';
+
 import { multerConfig } from './config/multer';
+import { UserController } from './controllers/UserController';
 
 const route = Router();
 

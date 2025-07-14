@@ -1,5 +1,5 @@
-import { type Request, type Response } from 'express';
 import bcrypt from 'bcryptjs';
+import { type Request, type Response } from 'express';
 
 import { prisma } from '@/config/prisma';
 

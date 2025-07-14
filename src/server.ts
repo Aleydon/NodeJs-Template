@@ -1,9 +1,9 @@
+import cors from 'cors';
 import express, { type Request, type Response } from 'express';
 import path from 'path';
 import swaggerUi from 'swagger-ui-express';
-import swaggerFile from '../swagger-output.json';
-import cors from 'cors';
 
+import swaggerFile from '../swagger-output.json';
 import { prisma } from './config/prisma';
 import { route } from './routes';
 

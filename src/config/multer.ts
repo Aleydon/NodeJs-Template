@@ -1,6 +1,6 @@
 import { Request } from 'express';
-import path from 'path';
 import multer, { Options } from 'multer';
+import path from 'path';
 import { URL } from 'url';
 
 const __dirname = new URL('.', import.meta.url).pathname;
